@@ -14,5 +14,14 @@ namespace ShauliBlog.ViewModels
         public string DateOfBirth { get; set; }
         public int SeniorityInYears { get; set; }
         public IEnumerable<SelectListItem> GenderList { get; set; }
+
+        public DateTime DateTimeOfBirth
+        {
+            get
+            {
+                return DateTime.Parse(DateOfBirth);
+            }
+        }
+
     }
 }
