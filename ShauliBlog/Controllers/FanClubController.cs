@@ -54,12 +54,23 @@ namespace ShauliBlog.Controllers
         [HttpPost]
         public ActionResult Create(FanFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.GenderList = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "M", Text = "Male"},
+                    new SelectListItem { Value = "F", Text = "Female" }
+                };
+                return View("Create", viewModel);
+            }
+                
+
             var fan = new Fan
             {
                 Name = viewModel.Name,
                 LastName = viewModel.LastName,
                 Gender = viewModel.Gender,
-                DateOfBirth = viewModel.DateTimeOfBirth,
+                DateOfBirth = viewModel.GetDateTimeOfBirth(),
                 SeniorityInYears = viewModel.SeniorityInYears
             };
 

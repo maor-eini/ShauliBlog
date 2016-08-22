@@ -11,22 +11,27 @@
         <div>
             @Html.LabelFor(m => m.Name)
             @Html.TextBoxFor(m => m.Name)
+            @Html.ValidationMessageFor(m=>m.Name)
         </div>
         <div>
             @Html.LabelFor(m => m.LastName)
             @Html.TextBoxFor(m => m.LastName)
+            @Html.ValidationMessageFor(m => m.LastName)
         </div>
         <div>
             @Html.LabelFor(m => m.Gender)
             @Html.DropDownListFor(m => m.Gender, new SelectList(Model.GenderList, "Value", "Text"))
+            @Html.ValidationMessageFor(m => m.Gender)
         </div>
         <div>
             @Html.LabelFor(m => m.DateOfBirth)
             @Html.TextBoxFor(m => m.DateOfBirth)
+            @Html.ValidationMessageFor(m => m.DateOfBirth)
         </div>
         <div>
             @Html.LabelFor(m => m.SeniorityInYears)
             @Html.TextBoxFor(m => m.SeniorityInYears)
+            @Html.ValidationMessageFor(m => m.SeniorityInYears)
         </div>
         <button type="submit">Save</button>
     }
