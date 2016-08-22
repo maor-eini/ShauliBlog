@@ -1,0 +1,32 @@
+﻿@model ShauliBlog.ViewModels.FanFormViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Add a fan</h2>
+
+<div id="mainContent">
+    <form>
+        <div>
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Gender)
+            @Html.DropDownListFor(m => m.Gender, new SelectList(Model.GenderList,"Value", "Text"))
+        </div>
+        <div>
+            @Html.LabelFor(m => m.DateOfBirth)
+            @Html.TextBoxFor(m => m.DateOfBirth)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.SeniorityInYears)
+            @Html.TextBoxFor(m => m.SeniorityInYears)
+        </div>
+        <button type="button" value="Save">Save</button>
+    </form>
+</div>
