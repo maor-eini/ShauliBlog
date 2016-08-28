@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ShauliBlog.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -36,9 +38,14 @@ namespace ShauliBlog.ViewModels
 
         public IEnumerable<SelectListItem> GenderList { get; set; }
 
-        public string Action { get
+        public string Action {
+            get
             {
-                return (Id != 0) ? "Update" : "Create";
+                Expression<Func<FanClubController, ActionResult>> update = (c => c.Update(this));
+                Expression<Func<FanClubController, ActionResult>> create = (c => c.Create(this));
+
+                var action = (Id != 0) ? update : create;
+                return (action.Body as MethodCallExpression).Method.Name;
             }
         }
 
