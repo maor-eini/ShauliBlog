@@ -1,4 +1,22 @@
-﻿@{
+﻿@model ShauliBlog.Models.Fans
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="form">
+    <h3 class="fanName">@Model.Name @Model.LastName</h3>
+    <div class="fanInfoField">
+        <label class="fanDetailsLabel">Gender: </label>
+        @{var gender = "Female";}
+        @if (Model.Gender == "m") { gender = "Male"; }
+        <span>@gender</span>
+    </div>
+    <div class="fanInfoField">
+        <label class="fanDetailsLabel">Date of Birth: </label>
+        <span>@Model.DateOfBirth</span>
+    </div>
+    <div class="fanInfoField">
+        <label class="fanDetailsLabel">Seniority in Years: </label>
+        <span>@Model.SeniorityInYears</span>
+    </div>
+</div>

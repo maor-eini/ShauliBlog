@@ -361,6 +361,21 @@ form input[type="submit"] {
 
 
 /*------------------------------
+=FAN DETAILS
+------------------------------*/
+
+.fanName{
+    text-transform: capitalize;
+}
+
+.fanDetailsLabel{
+    text-decoration:underline;
+    font-weight:bold;
+}
+
+
+
+/*------------------------------
 =FOOTER
 ------------------------------*/
 

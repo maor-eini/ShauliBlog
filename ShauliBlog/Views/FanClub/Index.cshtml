@@ -10,7 +10,7 @@
     @foreach (var fan in Model)
     {
         <tr>
-            <th>@Html.ActionLink($"{fan.Name} {fan.LastName}", "Details","FanClub", new { id = fan.Id })</th>
+            <th>@Html.ActionLink($"{fan.Name} {fan.LastName}", "Details","FanClub", new { id = fan.Id } , null)</th>
             <th><button type="button" onclick="location.href='@Url.Action("Update","FanClub",new { id = fan.Id })'">Edit</button></th>
             <th><button type="button" onclick="location.href='@Url.Action("Delete","FanClub",new { id = fan.Id })'">Delete</button></th>
         </tr>

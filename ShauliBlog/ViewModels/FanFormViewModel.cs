@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +13,6 @@ namespace ShauliBlog.ViewModels
         [Required]
         public int Id { get; set; }
 
-        [Required]
         public string Heading { get; set; }
 
         [Required]
@@ -44,7 +44,7 @@ namespace ShauliBlog.ViewModels
 
         public DateTime GetDateTimeOfBirth()
         {
-            return DateTime.Parse(DateOfBirth);
+            return DateTime.ParseExact(DateOfBirth ,"dd/mm/yyyy" , new CultureInfo("it-IT"));
         }
 
     }
