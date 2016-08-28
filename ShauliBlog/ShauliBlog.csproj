@@ -116,7 +116,9 @@
   <ItemGroup>
     <Content Include="Content\11.css" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -130,19 +132,20 @@
       <DependentUpon>201608221917514_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Fan.cs" />
+    <Compile Include="Models\Fans.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FanFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\FanClub\Create.cshtml" />
     <Content Include="Views\FanClub\Index.cshtml" />
-    <Content Include="Views\FanClub\Update.cshtml" />
     <Content Include="Views\FanClub\Details.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\FanClub\FanForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace ShauliBlog.Models
 {
-    public class Fan
+    public class Fans
     {
         [Key]
         public int Id { get; set; }
@@ -24,8 +21,8 @@ namespace ShauliBlog.Models
         public int SeniorityInYears { get; set; }
     }
 
-    class FanDbContext : DbContext
+    class FansDbContext : DbContext
     {
-        public DbSet<Fan> Fans { get; set; }
+        public DbSet<Fans> Fans { get; set; }
     }
 }

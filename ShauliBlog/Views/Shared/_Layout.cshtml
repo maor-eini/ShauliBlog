@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>Ha-Blog Shel Shauli</h1>
-        <audio controls autoplay>
+        <audio controls> <!-- autoplay -->
             <source src="~/Resources/Audio/music.mp3" type="audio/mp3" />
         </audio>
     </header>
@@ -18,8 +18,8 @@
         <!-- Navigation -->
         <ul>
             <li class="selected">@Html.ActionLink("Blog", "Index", "Blog")</li>
-            <li><a href="#">About</a></li>
             <li>@Html.ActionLink("Fan Club", "Index", "FanClub")</li>
+            <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
             <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
         </ul>

@@ -5,14 +5,14 @@ namespace ShauliBlog.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ShauliBlog.Models.FanDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ShauliBlog.Models.FansDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ShauliBlog.Models.FanDbContext context)
+        protected override void Seed(ShauliBlog.Models.FansDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,5 +1,20 @@
-﻿@{
+﻿@model IEnumerable<ShauliBlog.Models.Fans>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Fan Club";
 }
+
+<h2>Fan List</h2>
+<button type="button" onclick="location.href='@Url.Action("Create","FanClub")'">Add</button>
+<Table>
+    @foreach (var fan in Model)
+    {
+        <tr>
+            <th>@Html.ActionLink($"{fan.Name} {fan.LastName}", "Details","FanClub", new { id = fan.Id })</th>
+            <th><button type="button" onclick="location.href='@Url.Action("Update","FanClub",new { id = fan.Id })'">Edit</button></th>
+            <th><button type="button" onclick="location.href='@Url.Action("Delete","FanClub",new { id = fan.Id })'">Delete</button></th>
+        </tr>
+    }
+</Table>
 
 

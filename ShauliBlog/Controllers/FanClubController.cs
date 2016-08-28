@@ -1,55 +1,84 @@
 ﻿using ShauliBlog.Models;
 using ShauliBlog.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace ShauliBlog.Controllers
 {
     public class FanClubController : Controller
     {
-        private FanDbContext _context;
+        private FansDbContext _context;
 
         public FanClubController()
         {
-            _context = new FanDbContext();
+            _context = new FansDbContext();
         }
-        // GET: FanClub
+
+        #region Http GET actions
+        //Display Fan List
         public ActionResult Index()
         {
-            //var fanList = from _context.Fans.ToList() as a select new FanFormViewModel { }
-            //Return Fan list ?
-            return View();
+            var fanList = _context.Fans
+                .OrderBy(f => f.Name);
+
+            return View(fanList);
         }
 
-        [HttpPost]
-        public ActionResult Update()
+        //Display Fan Details
+        public ActionResult Details(int id)
         {
-            return View();
+            var fan = _context.Fans.SingleOrDefault(f => f.Id == id);
+
+            return View(fan);
         }
 
-        public ActionResult Details()
-        {
-            return View();
-        }
-
-        public ActionResult Delete()
-        {
-            return View();
-        }
-
+        //Display Empty Fan Form
         public ActionResult Create()
         {
             var fanForm = new FanFormViewModel();
+            fanForm.Heading = "Create a new Fan";
             fanForm.GenderList = new List<SelectListItem>
             {
                 new SelectListItem { Value = "M", Text = "Male"},
                 new SelectListItem { Value = "F", Text = "Female" }
             };
-            return View(fanForm);
+            return View("FanForm", fanForm);
         }
+
+        //Display Filled Fan Form 
+        public ActionResult Update(int id)
+        {
+            var fan = _context.Fans.SingleOrDefault(f => f.Id == id);
+
+            if (fan == null)
+                return HttpNotFound();
+
+            var viewModel = new FanFormViewModel()
+            {
+                Id = fan.Id,
+                Heading = $"Edit {fan.Name} {fan.LastName}",
+                Name = fan.Name,
+                LastName = fan.LastName,
+                Gender = fan.Gender,
+                DateOfBirth = fan.DateOfBirth.ToString("d MMM yyyy"),
+                SeniorityInYears = fan.SeniorityInYears,
+                GenderList = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "M", Text = "Male"},
+                    new SelectListItem { Value = "F", Text = "Female" }
+                }
+
+            };
+
+            return View("FanForm", viewModel);
+        }
+
+
+        #endregion
+
+        #region Http POST actions
 
         [HttpPost]
         public ActionResult Create(FanFormViewModel viewModel)
@@ -61,11 +90,11 @@ namespace ShauliBlog.Controllers
                     new SelectListItem { Value = "M", Text = "Male"},
                     new SelectListItem { Value = "F", Text = "Female" }
                 };
-                return View("Create", viewModel);
+                return View("FanForm", viewModel);
             }
-                
 
-            var fan = new Fan
+            //Create new fan
+            var fan = new Fans
             {
                 Name = viewModel.Name,
                 LastName = viewModel.LastName,
@@ -77,7 +106,54 @@ namespace ShauliBlog.Controllers
             _context.Fans.Add(fan);
             _context.SaveChanges();
 
-            return RedirectToAction("Index","FanClub");
+            return RedirectToAction("Index", "FanClub");
         }
+
+        [HttpPost]
+        public ActionResult Update(FanFormViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                viewModel.GenderList = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "M", Text = "Male"},
+                    new SelectListItem { Value = "F", Text = "Female" }
+                };
+                return View("FanForm", viewModel);
+            }
+
+            //Update existing fan
+            var fanInDb = _context.Fans.SingleOrDefault(f => f.Id == viewModel.Id);
+
+            if (fanInDb == null)
+                return HttpNotFound();
+
+            fanInDb.Name = viewModel.Name;
+            fanInDb.LastName = viewModel.LastName;
+            fanInDb.Gender = viewModel.Gender;
+            fanInDb.DateOfBirth = viewModel.GetDateTimeOfBirth();
+            fanInDb.SeniorityInYears = viewModel.SeniorityInYears;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "FanClub");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var fanInDb = _context.Fans.Where(m => m.Id == id).SingleOrDefault();
+
+            if (fanInDb == null)
+                return HttpNotFound();
+
+            _context.Fans.Remove(fanInDb); //TODO:support cascading using entity's fluent api
+
+            return View();
+        }
+
+        #endregion
+
+
     }
 }

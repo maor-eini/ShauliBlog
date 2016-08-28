@@ -3,15 +3,18 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Add a fan</h2>
 
+<h2>@Model.Heading</h2>
 <div id="mainContent">
-    @using (Html.BeginForm("Create", "FanClub"))
+    
+    @using (Html.BeginForm(Model.Action, "FanClub"))
     {
+        <p>All the fields are <strong>required</strong>.</p>
+        @Html.HiddenFor(m => m.Id)
         <div>
             @Html.LabelFor(m => m.Name)
-            @Html.TextBoxFor(m => m.Name)
-            @Html.ValidationMessageFor(m=>m.Name)
+            @Html.TextBoxFor(m => m.Name, new { autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.Name)
         </div>
         <div>
             @Html.LabelFor(m => m.LastName)
@@ -25,15 +28,15 @@
         </div>
         <div>
             @Html.LabelFor(m => m.DateOfBirth)
-            @Html.TextBoxFor(m => m.DateOfBirth)
+            @Html.TextBoxFor(m => m.DateOfBirth, new { placeholder = "eg 24/11/1989" })
             @Html.ValidationMessageFor(m => m.DateOfBirth)
         </div>
         <div>
             @Html.LabelFor(m => m.SeniorityInYears)
-            @Html.TextBoxFor(m => m.SeniorityInYears)
+            @Html.TextBoxFor(m => m.SeniorityInYears, new { placeholder = "eg 0" })
             @Html.ValidationMessageFor(m => m.SeniorityInYears)
         </div>
         <button type="submit">Save</button>
     }
-
 </div>
+
