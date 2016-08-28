@@ -16,18 +16,22 @@ namespace ShauliBlog.ViewModels
         public string Heading { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required]
         public string Gender { get; set; }
 
         [Required]
+        [Display(Name = "Date of Birth")]
         public string DateOfBirth { get; set; }
 
         [Required]
+        [Display(Name = "Seniority in Years")]
         public int SeniorityInYears { get; set; }
 
         public IEnumerable<SelectListItem> GenderList { get; set; }

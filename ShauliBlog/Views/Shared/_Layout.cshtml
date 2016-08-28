@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/11.css" type="text/css" media="screen" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Ha-Blog Shel Shauli</h1>
-        <audio controls> <!-- autoplay -->
+        <audio controls>
+            <!-- autoplay -->
             <source src="~/Resources/Audio/music.mp3" type="audio/mp3" />
         </audio>
     </header>
-
     <nav>
         <!-- Navigation -->
         <ul>
@@ -21,23 +21,19 @@
             <li>@Html.ActionLink("Fan Club", "Index", "FanClub")</li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
-            <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
+            <li id="subscribe" class="subscribe"><a class="hover" href="#">Subscribe via. RSS</a></li>
         </ul>
     </nav>
-
     <section id="intro">
         <!-- Introduction -->
         <h2>Do you have questions for me ?</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
         <img src="~/Resources/Images/intro_shauli.png" alt="Shauli" />
     </section>
-
     <div id="content">
-
         <div id="mainContent">
             @RenderBody()
         </div>
-
         <aside>
             <section>
                 <header>
@@ -61,9 +57,7 @@
                 </ul>
             </section>
         </aside>
-
     </div>
-
     <footer>
         <!-- Footer -->
         <div>
@@ -88,6 +82,5 @@
             </section>
         </div>
     </footer>
-
 </body>
 </html>
