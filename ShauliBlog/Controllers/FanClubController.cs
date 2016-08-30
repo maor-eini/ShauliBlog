@@ -62,7 +62,7 @@ namespace ShauliBlog.Controllers
                 Name = fan.Name,
                 LastName = fan.LastName,
                 Gender = fan.Gender,
-                DateOfBirth = fan.DateOfBirth.ToString("d MMM yyyy"),
+                DateOfBirth = fan.DateOfBirth.ToString("dd/mm/yyyy"),
                 SeniorityInYears = fan.SeniorityInYears,
                 GenderList = new List<SelectListItem>
                 {
@@ -73,6 +73,20 @@ namespace ShauliBlog.Controllers
             };
 
             return View("FanForm", viewModel);
+        }
+
+        //Delete by Id
+        public ActionResult Delete(int id)
+        {
+            var fanInDb = _context.Fans.Where(m => m.Id == id).SingleOrDefault();
+
+            if (fanInDb == null)
+                return HttpNotFound();
+
+            _context.Fans.Remove(fanInDb); //TODO:support cascading using entity's fluent api
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
 
@@ -137,19 +151,6 @@ namespace ShauliBlog.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "FanClub");
-        }
-
-        [HttpPost]
-        public ActionResult Delete(int id)
-        {
-            var fanInDb = _context.Fans.Where(m => m.Id == id).SingleOrDefault();
-
-            if (fanInDb == null)
-                return HttpNotFound();
-
-            _context.Fans.Remove(fanInDb); //TODO:support cascading using entity's fluent api
-
-            return View();
         }
 
         #endregion
