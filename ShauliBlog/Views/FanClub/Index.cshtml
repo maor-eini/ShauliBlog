@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShauliBlog.Models.Fan>
+﻿@model IEnumerable<ShauliBlog.Models.Fans>
+@using System.Linq
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Fan Club";
@@ -6,15 +7,23 @@
 
 <h2>Fan List</h2>
 <button type="button" onclick="location.href='@Url.Action("Create","FanClub")'">Add</button>
-<Table>
-    @foreach (var fan in Model)
-    {
-        <tr>
-            <th>@Html.ActionLink($"{fan.Name} {fan.LastName}", "Details","FanClub", new { id = fan.Id } , null)</th>
-            <th><button type="button" onclick="location.href='@Url.Action("Update","FanClub",new { id = fan.Id })'">Edit</button></th>
-            <th><button type="button" onclick="location.href='@Url.Action("Delete","FanClub",new { id = fan.Id })'">Delete</button></th>
-        </tr>
-    }
-</Table>
+@if (Model == null || !Model.Any())
+{
+    <span>There are no fans</span>
+}
+else
+{
+    <Table>
+        @foreach (var fan in Model)
+        {
+            <tr>
+                <th>@Html.ActionLink($"{fan.Name} {fan.LastName}", "Details", "FanClub", new { id = fan.Id }, null)</th>
+                <th><button type="button" onclick="location.href='@Url.Action("Update","FanClub",new { id = fan.Id })'">Edit</button></th>
+                <th><button type="button" onclick="location.href='@Url.Action("Delete","FanClub",new { id = fan.Id })'">Delete</button></th>
+            </tr>
+        }
+    </Table>
+}
+
 
 
