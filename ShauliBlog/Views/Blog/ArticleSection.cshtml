@@ -14,6 +14,14 @@
         <div>
             @Model.Text
         </div>
+        <div>
+            <img src=@Model.Image alt="Alternate Text" />
+        </div>
+        <div>
+            <video class="pull-right" controls="controls" poster="https://images-na.ssl-images-amazon.com/images/I/51-YH7KBahL._SX425_.jpg">
+                <source type="video/mp4" src=@Model.Video />
+            </video>
+        </div>
     </article>
 </section>
 
