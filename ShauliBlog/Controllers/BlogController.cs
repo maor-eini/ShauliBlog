@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+
+using ShauliBlog.Data;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ShauliBlog.Controllers
@@ -9,9 +10,20 @@ namespace ShauliBlog.Controllers
     public class BlogController : Controller
     {
         // GET: Blog
+        private readonly ShauliBlogDbContext _context;
+
+        public BlogController()
+        {
+            _context = new ShauliBlogDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+
+            var posts = _context.Posts
+                .Include(p => p.Comments)
+                .ToList();
+
+            return View(posts);
         }
     }
 }

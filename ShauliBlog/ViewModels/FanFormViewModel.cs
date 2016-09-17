@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ShauliBlog.ViewModels
@@ -38,7 +36,8 @@ namespace ShauliBlog.ViewModels
 
         public IEnumerable<SelectListItem> GenderList { get; set; }
 
-        public string Action {
+        public string Action
+        {
             get
             {
                 Expression<Func<FanClubController, ActionResult>> update = (c => c.Update(this));
@@ -51,7 +50,7 @@ namespace ShauliBlog.ViewModels
 
         public DateTime GetDateTimeOfBirth()
         {
-            return DateTime.ParseExact(DateOfBirth ,"dd/mm/yyyy" , new CultureInfo("it-IT"));
+            return DateTime.ParseExact(DateOfBirth, "dd/mm/yyyy", new CultureInfo("it-IT"));
         }
 
     }

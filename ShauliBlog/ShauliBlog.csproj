@@ -116,6 +116,15 @@
   <ItemGroup>
     <Content Include="Content\11.css" />
     <Content Include="Global.asax" />
+    <Content Include="Resources\Audio\music.mp3" />
+    <Content Include="Resources\Images\flower.png" />
+    <Content Include="Resources\Images\intro_background.png" />
+    <Content Include="Resources\Images\intro_flower.png" />
+    <Content Include="Resources\Images\intro_shauli.png" />
+    <Content Include="Resources\Images\nav_background.png" />
+    <Content Include="Resources\Images\rss.png" />
+    <Content Include="Resources\Images\sidebar_background.png" />
+    <Content Include="Resources\Images\sidebar_section_background.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -124,16 +133,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\FanClubController.cs" />
+    <Compile Include="Data\ShauliBlogDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608221917514_InitialModel.cs" />
-    <Compile Include="Migrations\201608221917514_InitialModel.Designer.cs">
-      <DependentUpon>201608221917514_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201609172003124_AddInitialModel.cs" />
+    <Compile Include="Migrations\201609172003124_AddInitialModel.Designer.cs">
+      <DependentUpon>201609172003124_AddInitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Fans.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Fan.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CommentFormViewModel.cs" />
     <Compile Include="ViewModels\FanFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +159,11 @@
     <Content Include="Views\FanClub\Details.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\FanClub\FanForm.cshtml" />
+    <Content Include="Views\Blog\CommentForm.cshtml" />
+    <Content Include="Views\Blog\Manage.cshtml" />
+    <Content Include="Views\Blog\ArticleSection.cshtml" />
+    <Content Include="Views\Blog\CommentsSection.cshtml" />
+    <Content Include="Views\Shared\SearchSection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -155,14 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Resources\Audio\" />
     <Folder Include="Resources\Fonts\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608221917514_InitialModel.resx">
-      <DependentUpon>201608221917514_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609172003124_AddInitialModel.resx">
+      <DependentUpon>201609172003124_AddInitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

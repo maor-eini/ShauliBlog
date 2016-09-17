@@ -1,0 +1,56 @@
+﻿@model ShauliBlog.ViewModels.CommentFormViewModel
+
+@using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { @class = "form" }))
+{
+    <div>
+        @Html.LabelFor(m => m.Writer, new { @class = "formLabel" })
+        @Html.TextBoxFor(m => m.Writer, new { autofocus = "autofocus", @class = "formField" })
+        @Html.ValidationMessageFor(m => m.Writer)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.WriterWebsite, new { @class = "formLabel" })
+        @Html.TextBoxFor(m => m.WriterWebsite, new { placeholder = "eg 24/11/1989", @class = "formField" })
+        @Html.ValidationMessageFor(m => m.WriterWebsite)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Title, new { @class = "formLabel" })
+        @Html.TextBoxFor(m => m.Title, new { @class = "formField" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Text, new { @class = "formLabel" })
+        @Html.TextBoxFor(m => m.Text, new { placeholder = "eg 0", @class = "formField" })
+        @Html.ValidationMessageFor(m => m.Text)
+    </div>
+    <button type="submit" value="Post comment">Post</button>
+}
+
+
+<!--
+    
+    <form action="#" method="post">
+    <h3>Post a comment</h3>
+    <p>
+        <label for="name">Name</label>
+        <input name="name" id="name" type="text" required />
+    </p>
+    <p>
+        <label for="email">E-mail</label>
+        <input name="email" id="email" type="email" required />
+    </p>
+    <p>
+        <label for="website">Website</label>
+        <input name="website" id="website" type="url" />
+    </p>
+    <p>
+        <label for="comment">Comment</label>
+        <textarea name="comment" id="comment" required></textarea>
+    </p>
+    <p>
+        <input type="submit" value="Post comment" />
+    </p>
+</form>
+
+-->
+
+

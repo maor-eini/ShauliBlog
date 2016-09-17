@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 
 namespace ShauliBlog.Models
 {
-    public class Fans
+    public class Fan
     {
         [Key]
         public int Id { get; set; }
@@ -21,8 +20,5 @@ namespace ShauliBlog.Models
         public int SeniorityInYears { get; set; }
     }
 
-    class FansDbContext : DbContext
-    {
-        public DbSet<Fans> Fans { get; set; }
-    }
+
 }

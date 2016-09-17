@@ -1,19 +1,19 @@
-﻿using ShauliBlog.Models;
+﻿using ShauliBlog.Data;
+using ShauliBlog.Models;
 using ShauliBlog.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Data.Entity;
 
 namespace ShauliBlog.Controllers
 {
     public class FanClubController : Controller
     {
-        private FansDbContext _context;
+        private ShauliBlogDbContext _context;
 
         public FanClubController()
         {
-            _context = new FansDbContext();
+            _context = new ShauliBlogDbContext();
         }
 
         #region Http GET actions
@@ -94,7 +94,7 @@ namespace ShauliBlog.Controllers
             }
 
             //Create new fan
-            var fan = new Fans
+            var fan = new Fan
             {
                 Name = viewModel.Name,
                 LastName = viewModel.LastName,
